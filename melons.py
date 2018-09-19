@@ -9,6 +9,8 @@ It reads melon data in from a text file.
 
 class Melon(object):
     """An Ubermelon Melon type."""
+    quantity = 0
+    total = 0
 
     def __init__(self,
                  melon_id,
