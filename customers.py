@@ -34,8 +34,6 @@ def read_customers_from_file(filepath):
 
 
 def get_by_email(email):
-    
-
-    return customers[email]
+    return customers.get(email, None)
 
 customers = read_customers_from_file("customers.txt")
