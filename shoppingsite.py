@@ -150,8 +150,8 @@ def process_login():
     # The logic here should be something like:
     #
     # - get user-provided name and password from request.form
-    email = request.form.get("email", None)
-    entered_password = request.form.get("password", None)
+    email = request.form.get("email")
+    entered_password = request.form.get("password")
 
     # - use customers.get_by_email() to retrieve corresponding Customer
     #   object (if any)
@@ -163,7 +163,7 @@ def process_login():
     # - if they match, store the user's email in the session, flash a success
     #   message and redirect the user to the "/melons" route
     if customer:
-        if entered_password == customer.password:
+        if customer.is_correct_password(entered_password):
             session["email"] = email
             flash("Successfully logged in!")
             return redirect("/melons")
@@ -172,8 +172,13 @@ def process_login():
     flash("Login failed.")
     return redirect("/login")
 
+@app.route("/logout")
+def process_logout():
+    # import pdb; pdb.set_trace()
 
-
+    session.pop("email")
+    flash("Logged out.")
+    return redirect("/melons")
 
 
 @app.route("/checkout")
