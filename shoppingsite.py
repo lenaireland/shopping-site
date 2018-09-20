@@ -7,6 +7,7 @@ Authors: Joel Burton, Christian Fernandez, Meggie Mahnken, Katie Byers.
 """
 
 from flask import Flask, render_template, redirect, flash, session, request
+from flask_debugtoolbar import DebugToolbarExtension
 import jinja2
 
 import melons, customers
@@ -193,4 +194,7 @@ def checkout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+  
+  app.debug = True 
+  DebugToolbarExtension(app)
+  app.run(debug=True)
