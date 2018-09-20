@@ -79,8 +79,10 @@ def show_shopping_cart():
     if cart_exists:
         for melon_id, melon_qty in session["cart"].items():
             melon = melons.get_by_id(melon_id)
+
             melon.quantity = melon_qty
             melon.total = melon.quantity * melon.price
+            
             melon_list.append(melon)
             total += melon.total
 

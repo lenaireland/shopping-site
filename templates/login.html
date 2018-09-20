@@ -1,8 +1,10 @@
-<html>
-<head>
-  <title>Login</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Ubermelon - Login</title>
+{% endblock %}
+
+{% block body %}
 
 <form class="form-signin" method="POST">
 
@@ -32,6 +34,4 @@
 
 </form>
 
-</body>
-</html>
-
+{% endblock %}
